@@ -18,15 +18,16 @@ description: Web Insight & Transcript skill that analyzes web content and provid
 ## 실행 절차 (SOP - Standard Operating Procedure)
 
 ### [공통] 데이터 추출 (Extraction Phase)
-*   `wit-reader-agent`를 호출하여 URL 내용을 `.gemini/skills/wit/temp/cleaned_content.md`로 정제합니다.
+1.  **고유 작업 디렉토리 생성**: 각 작업마다 `.gemini/skills/wit/temp_[output_name]_[unique_id]/` 형태의 고유 폴더를 생성합니다.
+2.  **데이터 수집**: `wit-reader-agent`를 호출하여 URL 내용을 해당 고유 폴더 내의 `cleaned_content.md`로 정제합니다.
 
 ### [분석 모드] (`/wit:analyze`)
-1.  **분석 및 요약**: `wit-analyzer-agent`와 `wit-summary-agent`를 병렬 호출하여 인사이트와 요약을 생성합니다.
-2.  **포맷팅**: `wit-formatter-agent`를 통해 최종 요약 보고서를 생성합니다.
+1.  **분석 및 요약**: 고유 폴더 내의 파일을 대상으로 에이전트들을 호출합니다.
+2.  **포맷팅 및 정리**: `wit-formatter-agent`가 최종 보고서를 작성한 후, **해당 고유 작업 디렉토리를 완전히 삭제**합니다.
 
 ### [번역 모드] (`/wit:translate`)
-1.  **전문 번역**: `wit-translator-agent`를 호출하여 `.gemini/skills/wit/temp/cleaned_content.md`를 번역합니다.
-2.  **저장**: 번역된 결과물을 마크다운 파일로 저장합니다. (기본값: `translated.md`)
+1.  **전문 번역**: 고유 폴더 내의 파일을 대상으로 번역을 수행합니다.
+2.  **정리**: 번역본(`.md`) 저장 완료 후, **고유 작업 디렉토리를 완전히 삭제**합니다.
 
 ## 에이전트 자동 위임 가이드
 - 요약/분석 요청: "요약해줘", "주제가 뭐야?", "리뷰해줘"

@@ -1,6 +1,6 @@
 # Agent Skills
 
-Agent Skills are specialized folders that provide Gemini with domain-specific knowledge, procedural workflows, and task-specific resources. Based on the [Agent Skills](https://agentskills.io) open standard, a “skill” is a self-contained directory that packages instructions and assets into a discoverable capability.
+Agent Skills are the primary mechanism for extending Gemini CLI with specialized knowledge, procedural workflows, and task-specific resources. Based on the [Agent Skills](https://agentskills.io) open standard, a “skill” is a self-contained directory that packages instructions and assets into a discoverable capability.
 
 ## Overview
 
@@ -10,10 +10,10 @@ Gemini autonomously decides when to employ a skill based on your request and the
 
 ## Key Benefits
 
-- **Shared Expertise:** Package complex workflows (like a specific team’s PR review process) into a folder that anyone can use.
-- **Repeatable Workflows:** Ensure complex multi-step tasks are performed consistently by providing a procedural framework.
-- **Resource Bundling:** Include scripts, templates, or example data alongside instructions so the agent has everything it needs.
-- **Progressive Disclosure:** Only skill metadata (name and description) is loaded initially. Detailed instructions and resources are only disclosed when the model explicitly activates the skill, saving context tokens.
+*   **Shared Expertise:** Package complex workflows (like a specific team’s PR review process) into a folder that anyone can use.
+*   **Repeatable Workflows:** Ensure complex multi-step tasks are performed consistently by providing a procedural framework.
+*   **Resource Bundling:** Include scripts, templates, or example data alongside instructions so the agent has everything it needs.
+*   **Progressive Disclosure:** Only skill metadata (name and description) is loaded initially. Detailed instructions and resources are only disclosed when the model explicitly activates the skill, saving context tokens.
 
 ## Skill Discovery Tiers
 
@@ -33,13 +33,13 @@ Within the same tier (user or workspace), the `.agents/skills/` alias takes prec
 
 Use the `/skills` slash command to view and manage available expertise:
 
-- `/skills list` (default): Shows all discovered skills and their status.
-- `/skills link <path>`: Links agent skills from a local directory via symlink.
-- `/skills disable <name>`: Prevents a specific skill from being used.
-- `/skills enable <name>`: Re-enables a disabled skill.
-- `/skills reload`: Refreshes the list of discovered skills from all tiers.
+*   `/skills list` (default): Shows all discovered skills and their status.
+*   `/skills link <path>`: Links agent skills from a local directory via symlink.
+*   `/skills disable <name>`: Prevents a specific skill from being used.
+*   `/skills enable <name>`: Re-enables a disabled skill.
+*   `/skills reload`: Refreshes the list of discovered skills from all tiers.
 
-> **Note**: Use `--scope workspace` to manage workspace-specific settings.
+> **Note**: These commands default to the `--scope user` (global). Use `--scope workspace` to manage workspace-specific settings.
 
 ### From the Terminal
 
@@ -85,8 +85,8 @@ gemini skills disable my-expertise --scope workspace
 2.  **Activation**: When Gemini identifies a task matching a skill’s description, it calls the `activate_skill` tool.
 3.  **Consent**: You will see a confirmation prompt in the UI detailing the skill’s name, purpose, and the directory path it will gain access to.
 4.  **Injection**: Upon your approval:
-    - The `SKILL.md` body and folder structure is added to the conversation history.
-    - The skill’s directory is added to the agent’s allowed file paths, granting it permission to read any bundled assets.
+    *   The `SKILL.md` body and folder structure is added to the conversation history.
+    *   The skill’s directory is added to the agent’s allowed file paths, granting it permission to read any bundled assets.
 5.  **Execution**: The model proceeds with the specialized expertise active. It is instructed to prioritize the skill’s procedural guidance within reason.
 
 ### Skill activation

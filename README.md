@@ -1,4 +1,4 @@
-# 🦉 Wit (Web Insight & Transcript)
+# 🦉 Wit (What Is This)
 
 [![Gemini CLI](https://img.shields.io/badge/Gemini_CLI-Skill-blue?style=flat-square)](https://geminicli.com)
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-green?style=flat-square)](https://nodejs.org)
