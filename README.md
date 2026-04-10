@@ -23,6 +23,7 @@
 ### 요구 사항
 - **Gemini CLI** 인스턴스
 - **Node.js v18** 이상 (내장 `fetch` API 사용)
+- **권장 모델**: **Gemini 3 Flash Preview** 또는 **Gemini 3 Flash Preview Lite** 만으로도 만족할만한 결과를 낼 수 있습니다. 가급적이면 Pro 모델을 이 skill에 사용하지 않으시기 바랍니다.
 
 ### 설치 방법
 본 저장소를 `.gemini/skills/wit` 경로로 복사하거나 심볼릭 링크를 연결합니다.
